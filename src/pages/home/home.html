@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <ion-grid *ngIf="weather">
+    <ion-row>
+      <ion-col width-50 offset-25>
+        <h1 class="cityName">{{weather.name}}</h1>
+        <div class="icon">
+          <img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
+        </div>
+        <h2 class="tempText">{{weather.weather[0].description}}</h2>
+        <div class="temp">{{weather.main.temp}} °C</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <ion-item>
+            <strong>Humidity: </strong>{{weather.main.humidity}} %
+          </ion-item>
+          <ion-item>
+            <strong>Wind speed: </strong>{{weather.wind.speed}} m/s
+          </ion-item>
+          <ion-item>
+            <strong>Min temp: </strong>{{weather.main.temp_min}} °C
+          </ion-item>
+          <ion-item>
+            <strong>Max temp: </strong>{{weather.main.temp_max}} °C
+          </ion-item>
+          <ion-item>
+              <strong>Coordinates: </strong>{{weather.coord.lon}}°, {{weather.coord.lat}}°
+            </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
