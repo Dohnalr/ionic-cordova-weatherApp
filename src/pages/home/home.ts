@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage'
 export class HomePage {
   weather: any;
   city: string;
+  status:any;
 
   constructor(public navCtrl: NavController, private weatherProvider:WeatherProvider, private storage: Storage) {
 
@@ -27,9 +28,15 @@ export class HomePage {
       }
 
       this.weatherProvider.getWeather(this.city).subscribe(weather => {
-        this.weather = weather;
-        console.log(weather);
-      });
+        
+          this.weather = weather;
+          console.log(weather);
+        },
+        err => {
+          console.log(err);
+          this.status="Something went wrong! Check your internet connection.";
+        }
+      );
     });
   }
 }
